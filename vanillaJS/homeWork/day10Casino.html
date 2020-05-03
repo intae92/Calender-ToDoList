@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="day10Casino.css">
+</head>
+<body>
+    <h1>Random Number Game</h1>
+    <div>
+        <h3>Generate a number between 0 and <span id="js-textRange"></span></h3>
+    </div>
+    <form id="js-form">
+        <input type="range" id="js-inputRange" min="0" max="200" value="0" list="tickmarks">
+        <datalist id="tickmarks">
+            <option value="0"></option>
+            <option value="50"></option>
+            <option value="100"></option>
+            <option value="150"></option>
+            <option value="200"></option>
+        </datalist>
+    </form>
+
+    <div>
+        <h3>Guess the number: <input type="number" id="js-inputNumber"><button id="js-playBtn">play!</button></h3>
+    </div>
+
+    <div class="hide">
+        <h3>You chose: <span id="js-inputValue"></span>, the machine chose: <span id="js-machine"></span></h3>
+        <h3 id="js-judgment"></h3>
+    </div>
+    
+
+    <script src="day10Casino.js"></script>
+</body>
+</html>
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <h1>Random Number Game</h1>
+    <div>
+      <h3 class="js-title">Generate a number between 0 and <span>10</span></h3>
+      <datalist id="number">
+        <option value="50"></option>
+        <option value="100"></option>
+        <option value="150"></option>
+        <option value="200"></option>
+      </datalist>
+      <input
+        list="number"
+        id="js-range"
+        type="range"
+        min="5"
+        max="200"
+        value="5"
+        step="5"
+      />
+    </div>
+    <form id="js-guess">
+      <label>Guess the number:</label>
+      <input type="number" max="200" min="5" />
+      <button>Play!</button>
+    </form>
+    <div id="js-result">
+      <span></span>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html> -->

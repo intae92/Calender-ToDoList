@@ -1,0 +1,17 @@
+body {
+    font-family: sans-serif;
+    display: block;
+  }
+
+#js-inputRange {
+    height: 100px;
+    width: 300px;
+}
+
+.hide {
+    display: none;
+}
+
+.showing {
+    display: block;
+}
