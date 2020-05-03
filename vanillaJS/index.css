@@ -33,7 +33,7 @@ h1 {
     color: white;
     transition: color 0.5s ease-in-out;  
     /* font-size: 12vw; */
-    font-size: 15vw;
+    font-size: 8vw;
     height: 1px;
     
 }
@@ -49,7 +49,7 @@ h1 {
     color:white;
 }
 .js-greetings {
-    font-size: 6vw;
+    font-size: 4vw;
     height: 1px;
     
 }
