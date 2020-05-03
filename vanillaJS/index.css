@@ -1,11 +1,46 @@
 body{
+    display: grid;
     background-color:  #353b48;
+    height: 100vh;
+    color: white;
+    place-content: center;
+    
+    text-align: center;
+    /* grid-template-rows: repeat(5, auto); */
+    /* justify-content: center; */
+
+    
+}
+
+ul button {
+    /* background-image: "/assets/images/cancel.png" no-repeat; */
+    background: url(assets/images/cancel.png) no-repeat; 
+    border: 0;
+    width: 16px;
+    height: 16px;
+    
+}
+.content {
+    display: grid;
+    place-content: center;
+    /* gap: 10px; */
+    /* font-size: 12vw; */
+    /* display: flex; */
+    
+    /* height: 50%; */
 }
 h1 {
     color: white;
     transition: color 0.5s ease-in-out;  
+    /* font-size: 12vw; */
+    font-size: 15vw;
+    height: 1px;
+    
 }
-
+.js-form {
+    margin-top: 20px;
+    padding-top: 20px;
+}
 .btn {
     cursor: pointer;
 }
@@ -13,13 +48,29 @@ h1 {
 .clicked{
     color:white;
 }
+.js-greetings {
+    font-size: 6vw;
+    height: 1px;
+    
+}
 
+ul {
+    list-style:none;
+}
 .form,
 .greetings {
   display: none;
   
 }
-
+input {
+    border-radius: 10px;
+    border: none;
+    
+    background-color: rgba(255,255,255,0.6);
+}
+input::placeholder{
+    color: #8854d0;
+}
 .showing {
     display: block;
 }
@@ -37,11 +88,54 @@ h1 {
 }
 
 .bgImage {
+    min-height: 100%; min-width: 1024px; /* Set up proportionate scaling */ 
+    width: 100%; height: auto; /* Set up positioning */ 
+    position: fixed; 
+    /* top: 0; 
+    left: 0; */
+
+    background-size: cover;
+    z-index: -1;
+    animation: fadeIn 0.5s linear;
+
+    /* position: fixed; */
+    position:absolute; 
+    top:0; 
+    left:0; 
+    /* right:0;  */
+    bottom:0; 
+    /* margin:auto;  */
+    /* min-width:50%;  */
+    /* min-height:50%;  */
+}
+@media screen and (max-width: 1024px) { /* Specific to this particular image */ 
+    .bgImage { 
+        left: 50%; margin-left: -512px; /* 50% */ 
+    } 
+}
+
+
+
+/* 
+.bgImage {
     position: absolute;
+
+    
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-size: cover;
+
+    background: no-repeat center/cover;
+
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: auto; 
+
+    height: auto;
+    
     z-index: -1;
     animation: fadeIn 0.5s linear;
-}
+    
+} */
