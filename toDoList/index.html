@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>toDoList</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="app__container">
+        <header id="header__container">
+          <div><span class="js-clock clock">00:00</span></div>
+          <div><span class="js-weather"></span></div>
+        </header>
+
+        <section id="section__container">
+          <section class="calender__container js-calender__container">
+            <div class="calender--title">
+              <button>left</button>
+              <span>2020</span>
+              <button>right</button>
+            </div>
+            <table class="calender--table">
+              <tbody>
+                <tr class="calender__table--day">
+                  <th id="SUN">SUN</th>
+                  <th id="MON">MON</th>
+                  <th id="TUE">TUE</th>
+                  <th id="WED">WED</th>
+                  <th id="THU">THU</th>
+                  <th id="FRI">FRI</th>
+                  <th id="SAT">SAT</th>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <!-- calender__container -->
+          <section class="toDoList__container">
+            <header>
+              <div><span>ToDay</span></div>
+            </header>
+            <section class="toDoList__container__section">
+              <div class="toDo__container">
+                <span>To-Do</span>
+
+                <div class="toDo">
+                  <ul class="js-toDoList"></ul>
+                  <form action="" class="js-toDoForm toDoForm">
+                    <input type="text" placeholder="Write a to do" />
+                  </form>
+                </div>
+                <!-- toDos -->
+              </div>
+              <!-- toDos__container -->
+
+              <div class="done__container">
+                <span>Done</span>
+                <div class="doneToDo">
+                  <ul class="js-doneToDoList"></ul>
+                </div>
+              </div>
+              <!-- done__container -->
+            </section>
+            <!-- toDoList__container__section -->
+          </section>
+          <!-- toDoList__container -->
+        </section>
+        <!-- section__container -->
+
+        <footer id="footer__container">
+          <div class="footer--todayToDo">오늘 할일</div>
+        </footer>
+      </div>
+    </div>
+    <script src="todo.js"></script>
+    <script src="clock.js"></script>
+    <script src="weather.js"></script>
+    <script src="calender.js"></script>
+  </body>
+</html>

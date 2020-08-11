@@ -1,0 +1,118 @@
+body {
+  background-color: #34495e;
+  min-width: 1000px;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app {
+  /* width: 100%; */
+  min-width: 1000px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app__container {
+  width: 900px;
+  min-width: 900px;
+  height: 100%;
+  /* height: 500px; */
+  /* background-color: white; */
+}
+
+#header__container {
+  width: 900px;
+  height: 50px;
+  background-color: wheat;
+  opacity: 0.2;
+  display: flex;
+  justify-content: space-around;
+}
+
+#section__container {
+  min-width: 900px;
+  height: 400px;
+  background-color: white;
+  /* border-radius: 30px; */
+
+  display: flex;
+}
+
+.calender__container {
+  width: 350px;
+  height: 100%;
+  background-color: white;
+  /* opacity: 0.2; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.calender__container > div {
+  background-color: blue;
+}
+
+table {
+  width: 100%;
+  /* border: 1px solid black; */
+  /* padding: 10px; */
+}
+th,
+td {
+  text-align: center;
+  width: 50px;
+  font-size: 11px;
+  border: 1px solid #9e9e9e;
+}
+th {
+  height: 20px;
+}
+td {
+  height: 45px;
+}
+td > div {
+  height: 15px;
+  width: 100%;
+}
+.td-lastMonth > div:nth-child(1),
+.td-nextMonth > div:nth-child(1) {
+  color: #b2bec3;
+}
+/* td > div:nth-child(1) {
+  background-color: white;
+} */
+/* todo */
+td > div:nth-child(2) {
+  /* background-color: #fce4ec; */
+}
+/* done */
+td > div:nth-child(3) {
+  /* background-color: #dcedc8; */
+}
+
+.toDoList__container {
+  width: 550px;
+  height: 100%;
+}
+.toDoList__container > header {
+  height: 50px;
+}
+.toDoList__container__section {
+  /* height: 100%; */
+  width: 100%;
+  height: 350px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 300px 300px; */
+}
+
+#footer__container {
+  width: 100%;
+  height: 50px;
+  background-color: wheat;
+  opacity: 0.2;
+}
