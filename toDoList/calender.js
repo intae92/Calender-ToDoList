@@ -1,22 +1,50 @@
 const calender__container = document.querySelector(".js-calender__container");
 const calender__title = document.querySelector(".calender--title");
+const title = calender__title.querySelector("span");
 const calender__table = document.querySelector(".calender--table");
 const tbody = calender__table.querySelector("tbody");
+const toDoListDay = document.querySelector("#toDoList--day");
+const TODO_LS = "toDoList";
+const DONE_LS = "doneList";
+
 const ONE_WEEK = 7;
-let thisYear, thisMonth;
+let thisYear, thisMonth, thisDay, targetDay;
 let days = [],
   daysTable = [];
+
+const paintToDoListDay = (day) => {
+  toDoListDay.innerText = `${day}일`;
+};
+
+const paintTitle = (year, month) => {
+  title.innerText = `${year}년 ${month}월`;
+};
 
 const paintCalenderTable = (year, month, title) => {
   console.log("paintCalenderTable year month", year, month);
   // const dayName = ["일", "월", "화", "수", "목", "금", "토"];
   const dayName = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const calenderCellCount = 42;
+  const today = new Date();
+  const today_year = today.getFullYear();
+  const today_month = today.getMonth() + 1;
+  const today_day = today.getDate();
+  thisDay = today_day; //오늘 몇일
 
+  console.log(today_year, today_month, today_day);
+  console.log(
+    `${today_year}${today_month < 10 ? `0${today_month}` : today_month}${
+      today_day < 10 ? `0${today_day}` : today_day
+    }`
+  );
   days = []; //지정된 월의 달력 페이지에 출력될 날짜
   daysTable = []; //달력을 만들기 위한 table에 맞춘 날짜 데이터 set
   thisYear = year;
   thisMonth = month;
+
+  paintTitle(thisYear, thisMonth + 1); //달력 년, 월 텍스트로 보이게
+  paintToDoListDay(thisDay);
+
   //저번달 마지막날
   const lastMonthLastDate = new Date(year, month, 0);
   const lastMOnthLastDate_year = lastMonthLastDate.getFullYear();
@@ -32,7 +60,6 @@ const paintCalenderTable = (year, month, title) => {
   const thisMonthFirstDate_month = thisMonthFirstDate.getMonth() + 1;
   const thisMonthFirstDate_date = thisMonthFirstDate.getDate();
   const thisMonthFirstDate_day = thisMonthFirstDate.getDay();
-  // console.log(thisMonthFirstDate_day);
 
   //이번달 마지막날
   const thisMonthLastDate = new Date(year, month + 1, 0);
@@ -125,6 +152,16 @@ const paintCalenderTable = (year, month, title) => {
         dateSpan.innerText = `${date[1]}`;
       }
 
+      //오늘 날짜 색으로 표시하기
+      if (
+        date[0] ===
+        `${today_year}${today_month < 10 ? `0${today_month}` : today_month}${
+          today_day < 10 ? `0${today_day}` : today_day
+        }`
+      ) {
+        dateSpan.classList.add("today--day");
+      }
+
       dateDiv.appendChild(dateSpan);
       td.append(dateDiv, todoDiv, doneDiv);
       td.id = date[0];
@@ -179,9 +216,9 @@ const handleNextMonth = (e) => {
 const turn_over_the_calender = () => {
   console.log("turn_over_the_calender");
   const calenderHeader = calender__title.children;
-  const leftBtn = calenderHeader[0];
-  const title = calenderHeader[1];
-  const rightBtn = calenderHeader[2];
+  const title = calenderHeader[0];
+  const leftBtn = calenderHeader[1].children[0];
+  const rightBtn = calenderHeader[1].children[1];
   leftBtn.addEventListener("click", handleLastMonth);
   rightBtn.addEventListener("click", handleNextMonth);
   // rightBtn = addEventListener("click", handleRightMonth);
@@ -197,6 +234,13 @@ const paintTable = () => {
   // calenderPaint(thisYear, thisMonth);
 };
 
+const handleTbody = (e) => {
+  // let target = e.target;
+  let targetId = e.target.parentNode.id || e.target.parentNode.parentNode.id;
+  // console.log("targetId", targetId);
+  if (targetId !== "") targetDay = targetId;
+  paintToDoListDay(parseInt(targetDay.slice(6, 8)));
+};
 const loadTable = () => {
   paintTable();
 };
@@ -204,5 +248,6 @@ const loadTable = () => {
 //300x400
 const calenderInit = () => {
   loadTable();
+  tbody.addEventListener("click", handleTbody);
 };
 calenderInit();

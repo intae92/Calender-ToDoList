@@ -18,9 +18,11 @@
         <section id="section__container">
           <section class="calender__container js-calender__container">
             <div class="calender--title">
-              <button>left</button>
               <span>2020</span>
-              <button>right</button>
+              <div>
+                <button>left</button>
+                <button>right</button>
+              </div>
             </div>
             <table class="calender--table">
               <tbody>
@@ -39,7 +41,7 @@
           <!-- calender__container -->
           <section class="toDoList__container">
             <header>
-              <div><span>ToDay</span></div>
+              <div><span>Day</span><span id="toDoList--day"></span></div>
             </header>
             <section class="toDoList__container__section">
               <div class="toDo__container">
@@ -74,6 +76,7 @@
         </footer>
       </div>
     </div>
+    <!-- <script type="module" src="main.js"></script> -->
     <script src="todo.js"></script>
     <script src="clock.js"></script>
     <script src="weather.js"></script>

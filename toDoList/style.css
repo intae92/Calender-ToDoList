@@ -52,8 +52,18 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.calender__container > div {
-  background-color: blue;
+.calender--title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.calender--title > span:nth-child(1) {
+  font-size: 20px;
+}
+.calender__container > div > button {
+  cursor: pointer;
 }
 
 table {
@@ -82,6 +92,14 @@ td > div {
 .td-nextMonth > div:nth-child(1) {
   color: #b2bec3;
 }
+.table-td-dateDiv {
+  cursor: pointer;
+}
+
+.today--day {
+  background-color: red;
+  border-radius: 20px;
+}
 /* td > div:nth-child(1) {
   background-color: white;
 } */
@@ -97,14 +115,21 @@ td > div:nth-child(3) {
 .toDoList__container {
   width: 550px;
   height: 100%;
+  margin-left: 20px;
 }
 .toDoList__container > header {
+  margin-top: 10px;
   height: 50px;
+}
+.toDoList__container > header > div > span:nth-child(2) {
+  padding-left: 50px;
+  font-size: 30px;
 }
 .toDoList__container__section {
   /* height: 100%; */
+  padding: 10px 10px;
   width: 100%;
-  height: 350px;
+  height: 330px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   /* grid-template-columns: 300px 300px; */
@@ -115,4 +140,8 @@ td > div:nth-child(3) {
   height: 50px;
   background-color: wheat;
   opacity: 0.2;
+}
+
+.none {
+  display: none;
 }
