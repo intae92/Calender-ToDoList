@@ -126,6 +126,7 @@ td > div {
   height: 100%;
   margin-left: 20px;
 }
+
 .toDoList__container > header {
   margin-top: 10px;
   height: 50px;
@@ -172,4 +173,34 @@ td > div {
 
 .doneCount {
   background-color: #dcedc8;
+}
+
+button {
+  border: none;
+  background-color: white;
+}
+.delBtn::before {
+  content: "\f00d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-left: 10px;
+  color: red;
+}
+.doneBtn::before {
+  content: "\f058";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-left: 10px;
+  color: green;
+}
+
+ul {
+  list-style: none;
+}
+input {
+  background: bisque;
+  border-radius: 20px;
+  text-align: center;
+  border-color: wheat;
+  opacity: 0.5;
 }

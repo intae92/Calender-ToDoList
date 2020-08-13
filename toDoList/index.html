@@ -24,8 +24,12 @@
             <div class="calender--title">
               <span>2020</span>
               <div>
-                <button id="left--btn">left</button>
-                <button id="right--btn">right</button>
+                <button id="left--btn">
+                  <i class="fas fa-angle-left fa-2x"></i>
+                </button>
+                <button id="right--btn">
+                  <i class="fas fa-angle-right fa-2x"></i>
+                </button>
               </div>
             </div>
             <table class="calender--table">
@@ -49,7 +53,7 @@
             </header>
             <section class="toDoList__container__section">
               <div class="toDo__container">
-                <span>To-Do</span>
+                <span style="font-size: 18px; font-weight: bold;">To-Do</span>
 
                 <div class="toDo">
                   <ul class="js-toDoList"></ul>
@@ -62,9 +66,12 @@
               <!-- toDos__container -->
 
               <div class="done__container">
-                <span>Done</span>
+                <span style="font-size: 18px; font-weight: bold;">Done</span>
                 <div class="doneToDo">
-                  <ul class="js-doneToDoList"></ul>
+                  <ul
+                    class="js-doneToDoList"
+                    style="text-decoration: line-through;"
+                  ></ul>
                 </div>
               </div>
               <!-- done__container -->

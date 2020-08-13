@@ -81,11 +81,12 @@ const doneToDo = (text, originalId, day, isDayClickValue) => {
   }
   li.id = toDoId;
   span.innerText = text;
-  delBtn.innerText = "❌";
+  // delBtn.innerText = "❌";
   delBtn.classList.add("delBtn");
   delBtn.addEventListener("click", deleteToDo);
-  doneBtn.innerText = "✅";
+  // doneBtn.innerText = "✅";
   doneBtn.classList.add("doneBtn");
+
   doneBtn.addEventListener("click", deleteToDo);
 
   const doneToDosObj = {
@@ -120,11 +121,14 @@ const paintToDo = (text, originalId, day, isDayClickValue) => {
 
   li.id = toDoId;
   span.innerText = text;
-  delBtn.innerText = "❌";
+  // delBtn.innerText = "❌";
   delBtn.classList.add("delBtn");
+
   delBtn.addEventListener("click", deleteToDo);
-  doneBtn.innerText = "✅";
+  // doneBtn.innerText = "✅";
+
   doneBtn.classList.add("doneBtn");
+
   doneBtn.addEventListener("click", deleteToDo);
 
   const toDosObj = {
