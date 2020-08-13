@@ -4,6 +4,9 @@ const title = calender__title.querySelector("span");
 const calender__table = document.querySelector(".calender--table");
 const tbody = calender__table.querySelector("tbody");
 const toDoListDay = document.querySelector("#toDoList--day");
+const toDoFormCalenderReset = document.querySelector(".js-toDoForm");
+const toDoListSection = document.querySelector(".toDoList__container__section");
+
 const TODO_LS = "toDoList";
 const DONE_LS = "doneList";
 
@@ -82,9 +85,11 @@ const paintCalenderTable = (year, month, title) => {
 
   //저번달
   for (let i = calenderStartNumber; i <= lastMonthLastDate_date; i++) {
-    let daysId = `${lastMOnthLastDate_year}${lastMOnthLastDate_month}${
-      i < 10 ? `0${i}` : i
-    }_${i}_td-lastMonth`;
+    let daysId = `${lastMOnthLastDate_year}${
+      lastMOnthLastDate_month < 10
+        ? `0${lastMOnthLastDate_month}`
+        : lastMOnthLastDate_month
+    }${i < 10 ? `0${i}` : i}_${i}_td-lastMonth`;
     days.push(daysId);
   }
 
@@ -116,9 +121,40 @@ const paintCalenderTable = (year, month, title) => {
       rowArr = [];
     }
   }
+  //달력 안에 일마다 todo 카운트
+  const todoDivCount = (span, id) => {
+    // console.log(id);
+    let currentToDoList = localStorage.getItem(TODO_LS);
+
+    if (currentToDoList !== null) {
+      let count = 0;
+      const todosList = JSON.parse(currentToDoList);
+      count = todosList.filter((v) => v.date === id).length;
+      if (count !== 0) span.innerText = `To-Do:${count}`;
+      span.classList.add("todoCount");
+    }
+
+    // console.log(days);
+  };
+  //달력 안에 일마다 done 갯수 세기
+  const doneDivCount = (span, id) => {
+    // console.log(id);
+    let currentDoneList = localStorage.getItem(DONE_LS);
+
+    if (currentDoneList !== null) {
+      let count = 0;
+      const doneList = JSON.parse(currentDoneList);
+      count = doneList.filter((v) => v.date === id).length;
+      if (count !== 0) span.innerText = `Done:${count}`;
+      span.classList.add("doneCount");
+    }
+
+    // console.log(days);
+  };
 
   // console.log(daysTable);
   //table 만들기
+  // createTable(today_year, today_month, today_day);
   for (let row = 0; row < 6; row++) {
     let tr = document.createElement("tr");
     for (let col = 0; col < 7; col++) {
@@ -129,10 +165,15 @@ const paintCalenderTable = (year, month, title) => {
       let todoDiv = document.createElement("div");
       let doneDiv = document.createElement("div");
       let dateSpan = document.createElement("span");
+      let todoDivSpan = document.createElement("span");
+      let doneDivSpan = document.createElement("span");
 
       dateDiv.classList.add("table-td-dateDiv");
       todoDiv.classList.add("table-td-todoDiv");
       doneDiv.classList.add("table-td-doneDiv");
+
+      todoDiv.appendChild(todoDivSpan);
+      doneDiv.appendChild(doneDivSpan);
 
       //달력 칸안에 월 표기
       if (date[1] === "1") {
@@ -167,6 +208,9 @@ const paintCalenderTable = (year, month, title) => {
       td.id = date[0];
       td.classList.add(date[2]);
       tr.appendChild(td);
+
+      todoDivCount(todoDivSpan, date[0]); //달력 안에 todo 갯수 세기
+      doneDivCount(doneDivSpan, date[0]); //달력 안에 done 갯수 세기
     }
     tbody.appendChild(tr);
   }
@@ -196,6 +240,7 @@ const handleLastMonth = (e) => {
   // console.log(lastYear, lastMonth, thisYear, thisMonth);
   resetTable();
   paintCalenderTable(lastYear, lastMonth);
+  paintToDoListDay("...");
 };
 
 //한달 후
@@ -210,6 +255,7 @@ const handleNextMonth = (e) => {
   // console.log(thisYear, thisMonth, nextYear, nextMonth);
   resetTable();
   paintCalenderTable(nextYear, nextMonth);
+  paintToDoListDay("...");
 };
 
 //달력 넘기기 controller
@@ -224,16 +270,17 @@ const turn_over_the_calender = () => {
   // rightBtn = addEventListener("click", handleRightMonth);
 };
 
-const paintTable = () => {
+const paintTable = (year, month) => {
   console.log("paintTable");
   const today = new Date();
-  thisYear = today.getFullYear();
-  thisMonth = today.getMonth();
+  thisYear = year || today.getFullYear();
+  thisMonth = month || today.getMonth();
   paintCalenderTable(thisYear, thisMonth);
   turn_over_the_calender(); //달력 넘기기
   // calenderPaint(thisYear, thisMonth);
 };
 
+//날짜 클릭시 todo리스트 바뀌게 당일 날짜 바뀌게
 const handleTbody = (e) => {
   // let target = e.target;
   let targetId = e.target.parentNode.id || e.target.parentNode.parentNode.id;
@@ -244,10 +291,44 @@ const handleTbody = (e) => {
 const loadTable = () => {
   paintTable();
 };
-
+const handleSectionButtonClicked__CalenderCountReset = (e) => {
+  const target = e.target.classList[0];
+  if (target === "delBtn" || target === "doneBtn") {
+    resetTable();
+    console.log("***click", thisYear, thisMonth, targetDay, thisDay);
+    paintTable(thisYear, thisMonth);
+    console.log(thisDay, targetDay);
+    let targetDayNumber;
+    if (targetDay !== undefined) {
+      targetDayNumber = parseInt(targetDay.slice(6, 8));
+    }
+    let currentDay = targetDayNumber || thisDay;
+    console.log("currentDay", currentDay);
+    paintToDoListDay(currentDay);
+  }
+  // console.log(e.target.classList[0]);
+};
+//달력안 todo, done 횟수 세기
+const handleCalenderCountReset = (e) => {
+  resetTable();
+  console.log("***submit", thisYear, thisMonth, targetDay, thisDay);
+  paintTable(thisYear, thisMonth);
+  let targetDayNumber;
+  if (targetDay !== undefined) {
+    targetDayNumber = parseInt(targetDay.slice(6, 8));
+  }
+  let currentDay = targetDayNumber || thisDay;
+  console.log("currentDay", currentDay);
+  paintToDoListDay(currentDay);
+};
 //300x400
 const calenderInit = () => {
   loadTable();
   tbody.addEventListener("click", handleTbody);
+  toDoFormCalenderReset.addEventListener("submit", handleCalenderCountReset); //달력안 todo, done 횟수 세기
+  toDoListSection.addEventListener(
+    "click",
+    handleSectionButtonClicked__CalenderCountReset
+  );
 };
 calenderInit();

@@ -4,6 +4,7 @@ const toDoList = document.querySelector(".js-toDoList");
 const doneToDoList = document.querySelector(".js-doneToDoList");
 const calender__table__toDo = document.querySelector(".calender--table");
 const tbody__toDo = calender__table__toDo.querySelector("tbody");
+const calender__header__title = document.querySelector(".calender--title");
 const ul__list = document.querySelector(".js-toDoList");
 const ul__list__done = document.querySelector(".js-doneToDoList");
 
@@ -100,6 +101,7 @@ const doneToDo = (text, originalId, day, isDayClickValue) => {
   }
 };
 
+//todo list 에 있는 값과 달력에 있는 값 맞추기
 const paintToDo = (text, originalId, day, isDayClickValue) => {
   isDayClick = isDayClickValue || isDayClick;
 
@@ -208,10 +210,28 @@ const handleTbody__toDo = (e) => {
   //   paintToDoTarget(v.text, v.id, v.date);
   // });
 };
+
+//달력 넘기는 버튼 클릭시 todoList 리셋
+const handleCalenderTitle__toDoReset = (e) => {
+  if (e.target.id === "left--btn" || e.target.id === "right--btn") {
+    let ul__list__li = ul__list.children;
+    while (ul__list__li.length > 0) {
+      ul__list.removeChild(ul__list__li[0]);
+    }
+    let ul__list__li__done = ul__list__done.children;
+    while (ul__list__li__done.length > 0) {
+      ul__list__done.removeChild(ul__list__li__done[0]);
+    }
+  }
+};
 const toDoInit = () => {
   loadToDos();
   toDoForm.addEventListener("submit", handleToDoSubmit);
   tbody__toDo.addEventListener("click", handleTbody__toDo);
+  calender__header__title.addEventListener(
+    "click",
+    handleCalenderTitle__toDoReset
+  );
 };
 
 toDoInit();
