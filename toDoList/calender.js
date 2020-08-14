@@ -6,6 +6,8 @@ const tbody = calender__table.querySelector("tbody");
 const toDoListDay = document.querySelector("#toDoList--day");
 const toDoFormCalenderReset = document.querySelector(".js-toDoForm");
 const toDoListSection = document.querySelector(".toDoList__container__section");
+const ul__list__calender = document.querySelector(".js-toDoList");
+const ul__list__done__calender = document.querySelector(".js-doneToDoList");
 
 const TODO_LS = "toDoList";
 const DONE_LS = "doneList";
@@ -236,6 +238,15 @@ const handleLastMonth = (e) => {
   resetTable();
   paintCalenderTable(lastYear, lastMonth);
   paintToDoListDay("...");
+
+  let ul__list__li = ul__list__calender.children;
+  while (ul__list__li.length > 0) {
+    ul__list.removeChild(ul__list__li[0]);
+  }
+  let ul__list__li__done = ul__list__done__calender.children;
+  while (ul__list__li__done.length > 0) {
+    ul__list__done.removeChild(ul__list__li__done[0]);
+  }
 };
 
 //한달 후
@@ -251,6 +262,14 @@ const handleNextMonth = (e) => {
   resetTable();
   paintCalenderTable(nextYear, nextMonth);
   paintToDoListDay("...");
+  let ul__list__li = ul__list__calender.children;
+  while (ul__list__li.length > 0) {
+    ul__list.removeChild(ul__list__li[0]);
+  }
+  let ul__list__li__done = ul__list__done__calender.children;
+  while (ul__list__li__done.length > 0) {
+    ul__list__done.removeChild(ul__list__li__done[0]);
+  }
 };
 
 //달력 넘기기 controller
