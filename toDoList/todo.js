@@ -37,7 +37,7 @@ const deleteToDo = (e) => {
 
   const btnType = btn.classList.value;
   const ulType = ul.classList.value;
-  console.log(ulType);
+
   li.remove();
   if (ulType === "js-toDoList") {
     const cleanToDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
@@ -105,8 +105,6 @@ const doneToDo = (text, originalId, day, isDayClickValue) => {
 //todo list 에 있는 값과 달력에 있는 값 맞추기
 const paintToDo = (text, originalId, day, isDayClickValue) => {
   isDayClick = isDayClickValue || isDayClick;
-
-  console.log("paint", day, isDayClick);
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
   const doneBtn = document.createElement("button");
@@ -155,7 +153,7 @@ const handleToDoSubmit = (e) => {
 };
 
 const loadToDos = () => {
-  console.log("loadtargetDay__toDoId", targetDay__toDoId);
+  // console.log("loadtargetDay__toDoId", targetDay__toDoId);
   const currentValue = localStorage.getItem(TODOLIST_LS);
   const currentDoneValue = localStorage.getItem(DONELIST_LS);
   let ul__list__li = ul__list.children;
@@ -163,7 +161,6 @@ const loadToDos = () => {
     ul__list.removeChild(ul__list__li[0]);
   }
   let ul__list__li__done = ul__list__done.children;
-  console.log(ul__list__li__done);
 
   while (ul__list__li__done.length > 0) {
     ul__list__done.removeChild(ul__list__li__done[0]);
@@ -192,7 +189,6 @@ const handleTbody__toDo = (e) => {
     ul__list.removeChild(ul__list__li[0]);
   }
   let ul__list__li__done = ul__list__done.children;
-  console.log(ul__list__li__done);
 
   while (ul__list__li__done.length > 0) {
     ul__list__done.removeChild(ul__list__li__done[0]);

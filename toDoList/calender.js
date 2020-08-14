@@ -24,7 +24,7 @@ const paintTitle = (year, month) => {
 };
 
 const paintCalenderTable = (year, month, title) => {
-  console.log("paintCalenderTable year month", year, month);
+  // console.log("paintCalenderTable year month", year, month);
   // const dayName = ["일", "월", "화", "수", "목", "금", "토"];
   const dayName = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const calenderCellCount = 42;
@@ -34,12 +34,6 @@ const paintCalenderTable = (year, month, title) => {
   const today_day = today.getDate();
   thisDay = today_day; //오늘 몇일
 
-  console.log(today_year, today_month, today_day);
-  console.log(
-    `${today_year}${today_month < 10 ? `0${today_month}` : today_month}${
-      today_day < 10 ? `0${today_day}` : today_day
-    }`
-  );
   days = []; //지정된 월의 달력 페이지에 출력될 날짜
   daysTable = []; //달력을 만들기 위한 table에 맞춘 날짜 데이터 set
   thisYear = year;
@@ -172,6 +166,7 @@ const paintCalenderTable = (year, month, title) => {
       todoDiv.classList.add("table-td-todoDiv");
       doneDiv.classList.add("table-td-doneDiv");
 
+      if (col === 0) dateDiv.classList.add("sat--redcolor");
       todoDiv.appendChild(todoDivSpan);
       doneDiv.appendChild(doneDivSpan);
 
@@ -222,7 +217,7 @@ const paintCalenderTable = (year, month, title) => {
 const resetTable = () => {
   days = [];
   daysTable = [];
-  console.log("resetTable");
+  // console.log("resetTable");
   for (let i = 1; i <= 6; i++) {
     tbody.removeChild(tbody.children[1]);
   }
@@ -230,7 +225,7 @@ const resetTable = () => {
 
 //한달 전
 const handleLastMonth = (e) => {
-  console.log("handleLastMonth");
+  // console.log("handleLastMonth");
   let lastYear = thisYear;
   let lastMonth = thisMonth - 1;
   if (lastMonth === -1) {
@@ -245,7 +240,7 @@ const handleLastMonth = (e) => {
 
 //한달 후
 const handleNextMonth = (e) => {
-  console.log("handleNextMonth");
+  // console.log("handleNextMonth");
   let nextYear = thisYear;
   let nextMonth = thisMonth + 1;
   if (nextMonth === 12) {
@@ -260,7 +255,7 @@ const handleNextMonth = (e) => {
 
 //달력 넘기기 controller
 const turn_over_the_calender = () => {
-  console.log("turn_over_the_calender");
+  // console.log("turn_over_the_calender");
   const calenderHeader = calender__title.children;
   const title = calenderHeader[0];
   const leftBtn = calenderHeader[1].children[0];
@@ -271,7 +266,7 @@ const turn_over_the_calender = () => {
 };
 
 const paintTable = (year, month) => {
-  console.log("paintTable");
+  // console.log("paintTable");
   const today = new Date();
   thisYear = year || today.getFullYear();
   thisMonth = month || today.getMonth();
@@ -295,15 +290,15 @@ const handleSectionButtonClicked__CalenderCountReset = (e) => {
   const target = e.target.classList[0];
   if (target === "delBtn" || target === "doneBtn") {
     resetTable();
-    console.log("***click", thisYear, thisMonth, targetDay, thisDay);
+    // console.log("***click", thisYear, thisMonth, targetDay, thisDay);
     paintTable(thisYear, thisMonth);
-    console.log(thisDay, targetDay);
+    // console.log(thisDay, targetDay);
     let targetDayNumber;
     if (targetDay !== undefined) {
       targetDayNumber = parseInt(targetDay.slice(6, 8));
     }
     let currentDay = targetDayNumber || thisDay;
-    console.log("currentDay", currentDay);
+    // console.log("currentDay", currentDay);
     paintToDoListDay(currentDay);
   }
   // console.log(e.target.classList[0]);
@@ -311,7 +306,6 @@ const handleSectionButtonClicked__CalenderCountReset = (e) => {
 //달력안 todo, done 횟수 세기
 const handleCalenderCountReset = (e) => {
   resetTable();
-  console.log("***submit", thisYear, thisMonth, targetDay, thisDay);
   paintTable(thisYear, thisMonth);
   let targetDayNumber;
   if (targetDay !== undefined) {

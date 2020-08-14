@@ -204,3 +204,7 @@ input {
   border-color: wheat;
   opacity: 0.5;
 }
+
+.sat--redcolor {
+  color: red;
+}
