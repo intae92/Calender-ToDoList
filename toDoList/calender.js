@@ -42,7 +42,7 @@ const paintCalenderTable = (year, month, title) => {
   thisMonth = month;
 
   paintTitle(thisYear, thisMonth + 1); //달력 년, 월 텍스트로 보이게
-  paintToDoListDay(thisDay);
+  paintToDoListDay(thisDay); //투두리스트 지정된 날짜 text 출력
 
   //저번달 마지막날
   const lastMonthLastDate = new Date(year, month, 0);
