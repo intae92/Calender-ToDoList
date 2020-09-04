@@ -3,6 +3,8 @@
 바닐라 자바스크립트로 Calender ToDo 구현하기
 [https://intae92.github.io/Calender-ToDoList/toDoList/index.html](https://intae92.github.io/Calender-ToDoList/toDoList/index.html)
 
+블로그 : [https://www.notion.so/7c0ffa90976441998046e492ad069123](https://www.notion.so/7c0ffa90976441998046e492ad069123)
+
 ---
 
 순수한 HTML, CSS, JavaScript, DOM API를 활용하여 달력 투두리스트를 만들었습니다.
